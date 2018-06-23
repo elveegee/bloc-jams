@@ -51,3 +51,11 @@ body {
   margin: 0 auto;
   max-width: 64rem;
 }
+
+.clearfix::after {
+   content: ".";
+   visibility: hidden;
+   display: block;
+   height: 0;
+   clear: both;
+}
