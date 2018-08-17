@@ -29,6 +29,21 @@ var albumPicasso = {
      ]
  };
 
+ var albumArchers = {
+      title: 'All the Nations Airports',
+      artist: 'Archers of Loaf',
+      label: 'Alias Records',
+      year: '1996',
+      albumArtUrl: 'assets/images/album_covers/archers.jpg',
+      songs: [
+          { title: 'Strangled by the Stereo Wire', duration: '3:26' },
+          { title: 'All the Nations Airports', duration: '3:43' },
+          { title: 'Scenic Pastures', duration: '5:55' },
+          { title: 'Worst Defense', duration: '8:21'},
+          { title: 'Attack of the Killer Bees', duration: '2:56'}
+      ]
+  };
+
  var createSongRow = function(songNumber, songName, songLength) {
      var template =
         '<tr class="album-view-song-item">'
@@ -65,5 +80,12 @@ var albumPicasso = {
  };
 
  window.onload = function() {
-     setCurrentAlbum(albumMarconi);
- };
+     var now = 0;
+     var allAlbums = [albumPicasso, albumMarconi, albumArchers];
+     setCurrentAlbum(allAlbums[now]);
+     var loadNext = function(){
+       now++;
+       setCurrentAlbum(allalbums[now]);
+     };
+     document.getElementsByClassName("album-cover-art").addEventListener('click', loadNext);
+ }
