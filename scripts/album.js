@@ -85,7 +85,13 @@ var albumPicasso = {
      setCurrentAlbum(allAlbums[now]);
      var loadNext = function(){
        now++;
-       setCurrentAlbum(allalbums[now]);
+       if (now > 2){
+         now = 0;
+         setCurrentAlbum(allAlbums[now]);
+       }
+       else{
+         setCurrentAlbum(allAlbums[now]);
+       }
      };
      albumImage.addEventListener('click', loadNext);
  }
