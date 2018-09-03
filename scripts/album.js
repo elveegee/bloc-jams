@@ -74,7 +74,7 @@
      }
  };
 
- var findParentByClassName = function(){
+ var findParentByClassName = function(element, targetClass){
    if (element) {
         var currentParent = element.parentElement;
         while (currentParent.className !== targetClass && currentParent.className !== null) {
@@ -157,18 +157,17 @@
     });
 
     for (var i = 0; i < songRows.length; i++) {
-         songRows[i].addEventListener('mouseleave', function(event) {
-           // #1
+          songRows[i].addEventListener('mouseleave', function(event) {
            var songItem = getSongItem(event.target);
            var songItemNumber = songItem.getAttribute('data-song-number');
 
-           // #2
            if (songItemNumber !== currentlyPlayingSong) {
                songItem.innerHTML = songItemNumber;
            }
-       });
-     }
-     songRows[i].addEventListener('click', function(event) {
-           clickHandler(event.target);
-         });
+          });
+
+          songRows[i].addEventListener('click', function(event) {
+            clickHandler(event.target);
+          });
+      }
  }
