@@ -114,6 +114,7 @@
      }
  };
 
+
 //To scroll through the album covers upon clicking.
  window.onload = function() {
      var now = 0;
