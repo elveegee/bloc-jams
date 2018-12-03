@@ -52,6 +52,11 @@ var previousSong = function() {
     $lastSongNumberCell.html(lastSongNumber);
 };
 
+var setSong = function(songNumber){
+    currentlyPlayingSongNumber = parseInt(songNumber);
+    currentSongFromAlbum = currentAlbum.songs[songNumber - 1];
+};
+
 var createSongRow = function(songNumber, songName, songLength) {
    var template =
       '<tr class="album-view-song-item">'
@@ -90,7 +95,7 @@ var clickHandler = function() {
   }
   if (currentlyPlayingSongNumber !== songNumber) {
     $(this).html(pauseButtonTemplate);
-    currentlyPlayingSongNumber = songNumber;
+    setSong(songNumber);
     currentSongFromAlbum = currentAlbum.songs[songNumber - 1];
     updatePlayerBarSong();
   } else if (currentlyPlayingSongNumber === songNumber) {
