@@ -37,7 +37,7 @@ var previousSong = function() {
     var lastSongNumber = currentlyPlayingSongNumber;
 
     // Set a new current song
-    currentlyPlayingSongNumber = currentSongIndex + 1;
+    setSong(songNumber);
     currentSongFromAlbum = currentAlbum.songs[currentSongIndex];
 
     // Update the Player Bar information
@@ -56,6 +56,10 @@ var setSong = function(songNumber){
     currentlyPlayingSongNumber = parseInt(songNumber);
     currentSongFromAlbum = currentAlbum.songs[songNumber - 1];
 };
+
+var getSongNumberCell = function(number) {
+  return $('.song-item-number[data-song-number="' + number + '"]');
+}
 
 var createSongRow = function(songNumber, songName, songLength) {
    var template =
@@ -90,7 +94,7 @@ var createSongRow = function(songNumber, songName, songLength) {
 var clickHandler = function() {
   var songNumber = parseInt($(this).attr('data-song-number'));
   if (currentlyPlayingSongNumber !== null) {
-    var currentlyPlayingCell = parseInt($('.song-item-number[data-song-number="' + currentlyPlayingSongNumber + '"]'));
+    var currentlyPlayingCell = getSongNumberCell(currentlyPlayingSongNumber);
     currentlyPlayingCell.html(currentlyPlayingSongNumber);
   }
   if (currentlyPlayingSongNumber !== songNumber) {
