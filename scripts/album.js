@@ -38,8 +38,10 @@ var previousSong = function() {
     var lastSongNumber = currentlyPlayingSongNumber;
 
     // Set a new current song
+
     setSong(currentSongIndex + 1);
     currentSoundFile.play();
+    setSong(songNumber);
     currentSongFromAlbum = currentAlbum.songs[currentSongIndex];
 
     // Update the Player Bar information
@@ -72,6 +74,10 @@ var setVolume = function (volume){
       currentSoundFile.setVolume(volume);
     }
 };
+
+var getSongNumberCell = function(number) {
+  return $('.song-item-number[data-song-number="' + number + '"]');
+}
 
 var createSongRow = function(songNumber, songName, songLength) {
    var template =
@@ -106,7 +112,7 @@ var createSongRow = function(songNumber, songName, songLength) {
 var clickHandler = function() {
   var songNumber = parseInt($(this).attr('data-song-number'));
   if (currentlyPlayingSongNumber !== null) {
-    var currentlyPlayingCell = parseInt($('.song-item-number[data-song-number="' + currentlyPlayingSongNumber + '"]'));
+    var currentlyPlayingCell = getSongNumberCell(currentlyPlayingSongNumber);
     currentlyPlayingCell.html(currentlyPlayingSongNumber);
   }
   if (currentlyPlayingSongNumber !== songNumber) {
@@ -157,6 +163,7 @@ var updatePlayerBarSong = function(){
  $('.currently-playing .artist-song-mobile').text(currentSongFromAlbum.title + " - " + currentAlbum.artist);
  $('.main-controls .play-pause').html(playerBarPauseButton);
 };
+
 
 //To scroll through the album covers upon clicking.
  window.onload = function() {
