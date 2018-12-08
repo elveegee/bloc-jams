@@ -63,7 +63,7 @@ var setSong = function(songNumber){
     currentSoundFile = new buzz.sound(currentSongFromAlbum.audioUrl), {
         formats: ['mp3'],
         preload: true
-    });
+    };
     setVolume(currentVolume);
 };
 
@@ -126,18 +126,18 @@ $row.hover(onHover, offHover);
 return $row;
 };
 
-$albumTitle.text(album.title);
-$albumArtist.text(album.artist);
-$albumReleaseInfo.text(album.year + ' ' + album.label);
-$albumImage.attr('src', album.albumArtUrl);
+var $albumTitle = $('.album-view-title');
+var $albumArtist = $('.album-view-artist');
+var $albumReleaseInfo = $('.album-view-release-info');
+var $albumImage = $('.album-cover-art');
+var $albumSongList = $('.album-view-song-list');
 
 var setCurrentAlbum = function(album) {
    currentAlbum = album;
-   var $albumTitle = $('.album-view-title');
-   var $albumArtist = $('.album-view-artist');
-   var $albumReleaseInfo = $('.album-view-release-info');
-   var $albumImage = $('.album-cover-art');
-   var $albumSongList = $('.album-view-song-list');
+   $albumTitle.text(album.title);
+   $albumArtist.text(album.artist);
+   $albumReleaseInfo.text(album.year + ' ' + album.label);
+   $albumImage.attr('src', album.albumArtUrl);
 
    $albumSongList.empty();
 
@@ -173,7 +173,7 @@ var updatePlayerBarSong = function(){
          setCurrentAlbum(allAlbums[now]);
        }
      };
-     albumImage.addEventListener('click', loadNext);
+     $albumImage.addEventListener('click', loadNext);
  }
 
 //Variable for the table (to use with the below event listener)
