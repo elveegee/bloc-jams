@@ -63,7 +63,7 @@ var setSong = function(songNumber){
     currentSoundFile = new buzz.sound(currentSongFromAlbum.audioUrl), {
         formats: ['mp3'],
         preload: true
-    });
+    };
     setVolume(currentVolume);
 };
 
@@ -126,10 +126,7 @@ $row.hover(onHover, offHover);
 return $row;
 };
 
-$albumTitle.text(album.title);
-$albumArtist.text(album.artist);
-$albumReleaseInfo.text(album.year + ' ' + album.label);
-$albumImage.attr('src', album.albumArtUrl);
+
 
 var setCurrentAlbum = function(album) {
    currentAlbum = album;
@@ -138,6 +135,11 @@ var setCurrentAlbum = function(album) {
    var $albumReleaseInfo = $('.album-view-release-info');
    var $albumImage = $('.album-cover-art');
    var $albumSongList = $('.album-view-song-list');
+
+   $albumTitle.text(album.title);
+   $albumArtist.text(album.artist);
+   $albumReleaseInfo.text(album.year + ' ' + album.label);
+   $albumImage.attr('src', album.albumArtUrl);
 
    $albumSongList.empty();
 
