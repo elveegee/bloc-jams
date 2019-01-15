@@ -70,15 +70,22 @@ var createSongRow = function(songNumber, songName, songLength) {
 
      var template =
         '<tr class="album-view-song-item">'
-        '  <td class="song-item-number" data-song-number="' + songNumber + '">' + songNumber + '</td>'
-        '  <td class="song-item-title">' + songName + '</td>'
-        '  <td class="song-item-duration">' + songLength + '</td>'
-        '</tr>'
-      ;
+        + '  <td class="song-item-number" data-song-number="' + songNumber + '">' + songNumber + '</td>'
+        + '  <td class="song-item-title">' + songName + '</td>'
+        + '  <td class="song-item-duration">' + songLength + '</td>'
+        + '</tr>'
+        ;
 
-     var $row = $(template);
+      return template;
 
-     var clickHandler = function() {
+      $row.find('.song-item-number').click(clickHandler);
+      $row.hover(onHover, offHover);
+      return $row;
+};
+
+var $row = $(template);
+
+var clickHandler = function() {
         var songNumber = $(this).attr('data-song-number');
 
 	      if (currentlyPlayingSongNumber !== null) {
@@ -98,12 +105,14 @@ var createSongRow = function(songNumber, songName, songLength) {
                 $(this).html(pauseButtonTemplate);
                 $('.main-controls .play-pause').html(playerBarPauseButton);
                                currentSoundFile.play();
-           } else {
+            } else {
                 $(this).html(playButtonTemplate);
                 $('.main-controls .play-pause').html(playerBarPlayButton);
                 currentSoundFile.pause();
+            }
         }
-     };
+
+  };
 
      var onHover = function(event) {
         var songNumberCell = $(this).find('.song-item-number');
@@ -122,12 +131,6 @@ var createSongRow = function(songNumber, songName, songLength) {
             songNumberCell.html(songNumber);
         }
      };
-
-     $row.find('.song-item-number').click(clickHandler);
-     $row.hover(onHover, offHover);
-     return $row;
-
-};
 
  var $albumTitle = $('.album-view-title');
  var $albumArtist = $('.album-view-artist');
