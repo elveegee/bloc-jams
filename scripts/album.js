@@ -217,9 +217,28 @@ var createSongRow = function(songNumber, songName, songLength) {
 
  var $previousButton = $('.main-controls .previous');
  var $nextButton = $('.main-controls .next');
+ var $playPauseControls = $('.main-controls .play-pause');
+
+ var togglePlayFromPlayerBar = function (){
+   var songNumberCell = parseInt($(this).find('.song-item-number'));
+   var songNumber = parseInt(songNumberCell.attr('data-song-number'));
+   if (currentSoundFile) {
+     songNumberCell.html(playButtonTemplate);
+     $playPauseControls.html(playerBarPlayButton);
+     currentSoundFile.stop();
+   }
+   else {
+     songNumberCell.html(pauseButtonTemplate);
+     $playPauseControls.html(playerBarPauseButton);
+     currentSoundFile.play();
+   }
+ };
 
 $(document).ready(function() {
     setCurrentAlbum(albumPicasso);
     $previousButton.click(previousSong);
     $nextButton.click(nextSong);
+    playPauseControls.addEventListener("click", function() {
+        togglePlayFromPlayerBar();
+      });
 });
