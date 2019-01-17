@@ -113,7 +113,7 @@ var createSongRow = function(songNumber, songName, songLength) {
                 if (currentSoundFile.isPaused()) {
                     $(this).html(pauseButtonTemplate);
                     $('.main-controls .play-pause').html(playerBarPauseButton);
-                                   currentSoundFile.play();
+                    currentSoundFile.play();
                 } else {
                     $(this).html(playButtonTemplate);
                     $('.main-controls .play-pause').html(playerBarPlayButton);
@@ -238,7 +238,7 @@ $(document).ready(function() {
     setCurrentAlbum(albumPicasso);
     $previousButton.click(previousSong);
     $nextButton.click(nextSong);
-    playPauseControls.addEventListener("click", function() {
+    $playPauseControls.addEventListener("click", function() {
         togglePlayFromPlayerBar();
-      });
+    });
 });
