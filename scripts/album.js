@@ -218,6 +218,7 @@ var createSongRow = function(songNumber, songName, songLength) {
  var $previousButton = $('.main-controls .previous');
  var $nextButton = $('.main-controls .next');
  var $playPauseControls = $('.main-controls .play-pause');
+ console.log($playPauseControls.html());
 
  var togglePlayFromPlayerBar = function (){
    var songNumberCell = parseInt($(this).find('.song-item-number'));
@@ -238,7 +239,8 @@ $(document).ready(function() {
     setCurrentAlbum(albumPicasso);
     $previousButton.click(previousSong);
     $nextButton.click(nextSong);
-    $playPauseControls.addEventListener("click", function() {
+    $playPauseControls[0].addEventListener("click", function() {
         togglePlayFromPlayerBar();
     });
+    console.log($playPauseControls.html());
 });
