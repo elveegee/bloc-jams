@@ -221,8 +221,7 @@ var createSongRow = function(songNumber, songName, songLength) {
  console.log($playPauseControls.html());
 
  var togglePlayFromPlayerBar = function (){
-   var songNumberCell = parseInt($(this).find('.song-item-number'));
-   var songNumber = parseInt(songNumberCell.attr('data-song-number'));
+   $(this).find('.song-item-number').data('song-number');
    if (currentSoundFile) {
      songNumberCell.html(playButtonTemplate);
      $playPauseControls.html(playerBarPlayButton);
